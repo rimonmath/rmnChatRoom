@@ -21,6 +21,16 @@ io.on('connection', function(socket){
 });
  
 // Listen application request on port 3000
-http.listen(3000, function(){
-  console.log('listening on *:3000');
+// http.listen(3000, function(){
+//   console.log('listening on *:3000');
+// });
+
+
+//for opensgift
+var port =  process.env.OPENSHIFT_NODEJS_PORT || 3000;   // Port 8080 if you run locally
+var address =  process.env.OPENSHIFT_NODEJS_IP || "127.0.0.1"; // Listening to localhost if you run locally
+
+
+http.listen(port, address, function(){
+  console.log("Server Running...");
 });
